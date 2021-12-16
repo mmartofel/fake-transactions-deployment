@@ -1,0 +1,20 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: kibana
+  labels:
+    app: kibana
+    app.kubernetes.io/component: kibana
+    app.kubernetes.io/instance: kibana
+spec:
+  ports:
+    - name: 5601-tcp
+      protocol: TCP
+      port: 5601
+      targetPort: 5601
+  selector:
+    app: kibana
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}

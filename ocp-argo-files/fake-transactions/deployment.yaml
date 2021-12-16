@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: fake-transactions
+    app.kubernetes.io/component: fake-transactions
+    app.kubernetes.io/instance: fake-transactions
+    app.kubernetes.io/part-of: ANGULAR_DEMO_APP
+    app.openshift.io/runtime: quarkus
+  name: fake-transactions
+spec:
+  selector:
+    matchLabels:
+      deployment: fake-transactions
+  template:
+    metadata:
+     labels:
+      deployment: fake-transactions
+    spec:
+      containers:
+      - env:
+        - name: DBUSER
+          valueFrom:
+            configMapKeyRef:
+              key: DBUSER
+              name: postgres-configmap
+        - name: DBCONNECT
+          valueFrom:
+            configMapKeyRef:
+              key: DBCONNECT
+              name: postgres-configmap
+        - name: DBPASSWORD
+          valueFrom:
+            configMapKeyRef:
+              key: DBPASSWORD
+              name: postgres-configmap
+        image: image-registry.openshift-image-registry.svc:5000/demoapp/fake-transactions:0.1
+        imagePullPolicy: IfNotPresent
+        name: fake-transactions
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        - containerPort: 8443
+          protocol: TCP
+        - containerPort: 8778
+          protocol: TCP
+        resources: {}

@@ -1,0 +1,19 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: kibana
+    app.kubernetes.io/component: kibana
+    app.kubernetes.io/instance: kibana
+    app.kubernetes.io/name: kibana
+    app.kubernetes.io/part-of: LOGGING_SUBSYSTEM
+    app.openshift.io/runtime-version: 6.8.2
+  name: kibana
+spec:
+  port:
+    targetPort: http-5601
+  wildcardPolicy: None
+  to:
+    kind: Service
+    name: kibana
+    weight: 100

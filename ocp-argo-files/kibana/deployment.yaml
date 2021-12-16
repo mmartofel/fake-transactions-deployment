@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: kibana
+    app.kubernetes.io/component: kibana
+    app.kubernetes.io/instance: kibana
+    app.kubernetes.io/name: kibana
+    app.kubernetes.io/part-of: LOGGING_SUBSYSTEM
+    app.openshift.io/runtime: elastic
+  name: kibana
+spec:
+  selector:
+    matchLabels:
+      app: kibana
+  template:
+    metadata:
+      labels:
+        app: kibana
+    spec:
+      containers:
+      - image: docker.elastic.co/kibana/kibana-oss:6.8.2
+        imagePullPolicy: IfNotPresent
+        name: kibana
+        ports:
+        - containerPort: 5601
+          protocol: TCP
+        resources: {}

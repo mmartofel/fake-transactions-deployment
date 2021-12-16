@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: sso
+    app.kubernetes.io/component: sso
+    app.kubernetes.io/name: keycloak
+    app.kubernetes.io/part-of: SSO_SUBSYSTEM
+    app.openshift.io/runtime: sso
+  name: keycloak
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sso
+  template:
+    metadata:
+      labels:
+        app: sso
+    spec:
+      containers:
+      - name: keycloak
+        imagePullPolicy: IfNotPresent
+        image: quay.io/keycloak/keycloak:15.0.2
+        ports:
+        - name: http-8080
+          containerPort: 8080
+        - name: https-8443
+          containerPort: 8443
+        readinessProbe:
+          httpGet:
+            path: /auth/realms/master
+            port: 8080        
+        envFrom:
+          - configMapRef:
+             name: keycloak-setup-configmap
+        resources: {}

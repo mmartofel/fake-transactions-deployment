@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: logstash
+    app.kubernetes.io/component: logstash
+    app.kubernetes.io/instance: logstash
+    app.kubernetes.io/name: logstash
+    app.kubernetes.io/part-of: LOGGING_SUBSYSTEM
+    app.openshift.io/runtime: elastic
+  name: logstash
+spec:
+  selector:
+    matchLabels:
+      app: logstash
+  template:
+    metadata:
+      labels:
+        app: logstash
+    spec:
+      volumes:
+        - name: volume-logstash-configmap
+          configMap:
+            name: logstash-configmap
+      containers:
+      - image: docker.elastic.co/logstash/logstash-oss:6.8.2
+        imagePullPolicy: IfNotPresent
+        name: logstash
+        ports:
+        - containerPort: 5044
+          protocol: TCP
+        - containerPort: 9600
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /usr/share/logstash/pipeline
+          name: volume-logstash-configmap
+        resources: {}

@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fake-transactions
+  labels:
+    app: fake-transactions
+    app.kubernetes.io/component: fake-transactions
+    app.kubernetes.io/instance: fake-transactions
+spec:
+  ports:
+  - name: http-8080
+    port: 8080
+    targetPort: 8080
+  - name: https-8443
+    port: 8443
+    targetPort: 8443
+  - name: https-8778
+    port: 8778
+    targetPort: 8778
+  selector:
+    deployment: fake-transactions

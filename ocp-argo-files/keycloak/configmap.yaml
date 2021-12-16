@@ -1,0 +1,10 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: keycloak-setup-configmap
+data:
+ KEYCLOAK_USER: admin
+ KEYCLOAK_PASSWORD: admin
+ DB_VENDOR: H2
+ JGROUPS_DISCOVERY_PROTOCOL: dns.DNS_PING
+ JGROUPS_DISCOVERY_PROPERTIES: dns_query=keycloak.dev.svc.cluster.local

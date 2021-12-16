@@ -1,0 +1,16 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: fake-transactions
+    app.kubernetes.io/component: fake-transactions
+    app.kubernetes.io/instance: fake-transactions
+  name: fake-transactions
+spec:
+  port:
+    targetPort: http-8080
+  wildcardPolicy: None
+  to:
+    kind: Service
+    name: fake-transactions
+    weight: 100

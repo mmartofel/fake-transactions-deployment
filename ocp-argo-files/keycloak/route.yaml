@@ -1,0 +1,16 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: sso
+    app.kubernetes.io/component: sso
+    app.kubernetes.io/instance: sso
+  name: keycloak
+spec:
+  tls:
+    termination: passthrough
+  to:
+    kind: Service
+    name: keycloak
+    weight: 100
+
