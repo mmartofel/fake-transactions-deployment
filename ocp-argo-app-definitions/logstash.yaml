@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: logstash
+spec:
+  destination:
+    name: ''
+    namespace: dev
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: ocp-argo-files/logstash
+    repoURL: 'https://github.com/mmartofel/fake-transactions-deployment.git'
+    targetRevision: HEAD
+  project: fake-transactions

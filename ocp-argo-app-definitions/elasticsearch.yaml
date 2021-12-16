@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: elasticsearch
+spec:
+  destination:
+    name: ''
+    namespace: dev
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: ocp-argo-files/elasticsearch
+    repoURL: 'https://github.com/mmartofel/fake-transactions-deployment.git'
+    targetRevision: HEAD
+  project: fake-transactions
