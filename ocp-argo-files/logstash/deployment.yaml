@@ -32,7 +32,7 @@ spec:
         - containerPort: 9600
           protocol: TCP
         - containerPort: 12201
-          protocol: TCP
+          protocol: UDP
         volumeMounts:
         - mountPath: /usr/share/logstash/pipeline
           name: volume-logstash-configmap
