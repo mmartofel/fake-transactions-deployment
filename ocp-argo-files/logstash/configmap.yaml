@@ -1,7 +1,7 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: logstash-configmap
+  name: logstash-setup-configmap
 data:
   gelf.conf: |
     input {

@@ -21,7 +21,7 @@ spec:
       volumes:
         - name: volume-logstash-configmap
           configMap:
-            name: logstash-configmap
+            name: logstash-setup-configmap
       containers:
       - image: docker.elastic.co/logstash/logstash-oss:6.8.2
         imagePullPolicy: IfNotPresent
