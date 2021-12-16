@@ -17,6 +17,7 @@ spec:
   - name: https-12201
     port: 12201
     targetPort: 12201
+    protocol: UDP
   selector:
     app: logstash
   type: ClusterIP
