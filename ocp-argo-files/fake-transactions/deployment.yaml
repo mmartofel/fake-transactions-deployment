@@ -34,6 +34,11 @@ spec:
             configMapKeyRef:
               key: DBPASSWORD
               name: postgres-configmap
+        envFrom:
+          - configMapRef:
+             name: logstash-configmap
+          - configMapRef:
+              name: orm-configmap
         image: image-registry.openshift-image-registry.svc:5000/demoapp/fake-transactions:0.1
         imagePullPolicy: IfNotPresent
         name: fake-transactions
