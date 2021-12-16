@@ -19,3 +19,5 @@ spec:
     targetPort: 8778
   selector:
     deployment: fake-transactions
+  type: ClusterIP
+  sessionAffinity: None    
