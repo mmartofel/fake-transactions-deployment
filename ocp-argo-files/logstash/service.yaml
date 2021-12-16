@@ -6,8 +6,6 @@ metadata:
     app: logstash
     app.kubernetes.io/component: logstash
     app.kubernetes.io/instance: logstash
-    app.kubernetes.io/name: logstash
-    app.kubernetes.io/part-of: LOGGING_SUBSYSTEM
 spec:
   ports:
   - name: http-5044
@@ -21,3 +19,5 @@ spec:
     targetPort: 12201
   selector:
     app: logstash
+  type: ClusterIP
+  sessionAffinity: None
