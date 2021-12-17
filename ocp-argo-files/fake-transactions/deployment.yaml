@@ -1,6 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  annotations:
+    app.openshift.io/connects-to: store
   labels:
     app: fake-transactions
     app.kubernetes.io/component: fake-transactions
