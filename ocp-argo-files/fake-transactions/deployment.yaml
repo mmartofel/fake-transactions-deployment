@@ -2,7 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    app.openshift.io/connects-to: store
+    app.openshift.io/connects-to: 'store, keycloak, logstash'
+    app.openshift.io/vcs-uri: 'https://github.com/mmartofel/fake-transactions.git'
   labels:
     app: fake-transactions
     app.kubernetes.io/component: fake-transactions
