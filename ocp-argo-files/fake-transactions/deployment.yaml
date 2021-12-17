@@ -8,7 +8,7 @@ metadata:
     app: fake-transactions
     app.kubernetes.io/component: fake-transactions
     app.kubernetes.io/instance: fake-transactions
-    app.kubernetes.io/part-of: ANGULAR_DEMO_APP
+    app.kubernetes.io/part-of: QUARKUS_API_ĶSERVICE
     app.openshift.io/runtime: quarkus
   name: fake-transactions
 spec:
