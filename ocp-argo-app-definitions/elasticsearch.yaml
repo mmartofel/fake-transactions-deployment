@@ -5,7 +5,7 @@ metadata:
 spec:
   destination:
     name: ''
-    namespace: dev
+    namespace: fake-transactions
     server: 'https://kubernetes.default.svc'
   source:
     path: ocp-argo-files/elasticsearch
