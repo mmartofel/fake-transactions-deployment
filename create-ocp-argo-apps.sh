@@ -5,6 +5,11 @@ oc delete application logstash -n openshift-gitops
 oc delete application elasticsearch -n openshift-gitops
 oc delete application kibana -n openshift-gitops
 
+oc adm policy add-cluster-role-to-user cluster-admin -z default -n fake-transactions
+oc adm policy add-cluster-role-to-user cluster-admin -z builder -n fake-transactions
+oc adm policy add-cluster-role-to-user cluster-admin -z deployer -n fake-transactions
+oc adm policy add-cluster-role-to-user cluster-admin -z pipeline -n fake-transactions
+
 oc create -f ./ocp-argo-app-definitions/store.yaml -n openshift-gitops
 oc create -f ./ocp-argo-app-definitions/fake-transactions.yaml -n openshift-gitops
 oc create -f ./ocp-argo-app-definitions/keycloak.yaml -n openshift-gitops
