@@ -42,6 +42,8 @@ spec:
              name: logstash-configmap
           - configMapRef:
               name: orm-configmap
+          - configMapRef:
+              name: keycloak-configmap
         image: image-registry.openshift-image-registry.svc:5000/fake-transactions/fake-transactions:0.1
         imagePullPolicy: IfNotPresent
         name: fake-transactions
