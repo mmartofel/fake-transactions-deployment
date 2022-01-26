@@ -4,5 +4,6 @@ metadata:
   name: logstash-configmap
 data:
   GELF_ENABLED: 'true'
+  GELF_EMABLED: 'true'
   GELF_HOST: 'logstash'
   GELF_PORT: '12201'
