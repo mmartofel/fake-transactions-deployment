@@ -1,0 +1,6 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: keycloak-configmap
+data:
+  quarkus.oidc.auth-server-url: 'http://keycloak:62215'
