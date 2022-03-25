@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: fake-transactions
+  namespace: openshift-gitops
+spec:
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  description: Dummy project to create fake transactions data
+  destinations:
+    - name: '*'
+      namespace: fake-transactions
+      server: '*'
+  sourceRepos:
+    - '*'
+status: {}

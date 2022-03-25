@@ -1,3 +1,5 @@
+oc delete AppProject fake-transactions -n openshift-gitops
+
 oc delete application store -n openshift-gitops
 oc delete application fake-transactions -n openshift-gitops
 oc delete application keycloak -n openshift-gitops
@@ -10,6 +12,7 @@ oc adm policy add-cluster-role-to-user cluster-admin -z builder -n fake-transact
 oc adm policy add-cluster-role-to-user cluster-admin -z deployer -n fake-transactions
 oc adm policy add-cluster-role-to-user cluster-admin -z pipeline -n fake-transactions
 
+oc create -f ./ocp-argo-app-definitions/fake-transactions-argo-project.yaml -n openshift-gitops
 oc create -f ./ocp-argo-app-definitions/store.yaml -n openshift-gitops
 oc create -f ./ocp-argo-app-definitions/fake-transactions.yaml -n openshift-gitops
 oc create -f ./ocp-argo-app-definitions/keycloak.yaml -n openshift-gitops
